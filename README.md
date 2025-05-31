@@ -47,9 +47,9 @@ This definition of utility can be seen as a generalization of the utility in the
 # key_dsitribution
 
 Implements the key distribution algorithms shown in our work (the ACS-agnostic algorthithm is not implemented):
-1. Fixed Key-Degree ACS-Aware algorithm (in memoryless directory).
-2. Variable Key-Degree ACS-Aware algorithm (in memoryless directory). Optimization of alpha vector with possible key degrees 2 and 3 is implemented in same directory.
-3. Pair-Covering ($`d = 2`$) (in stateful directory).
+1. Fixed Key-Degree ACS-Aware algorithm (under "memoryless" subdirectory).
+2. Variable Key-Degree ACS-Aware algorithm (under "memoryless" subdirectory). Optimization of alpha vector with possible key degrees 2 and 3 is implemented in same directory.
+3. Pair-Covering ($`d = 2`$) (under "stateful" subdirectory).
 
 The directory also contains a script for testing various probability calculations shown in our work.
 
@@ -62,4 +62,14 @@ Contains one function for generating a content sharing scenario with its various
 The main directory for holding running simulations and generating plots used in our work.
 It also contains a simple script generating Familiy 1 instances, shown in "Power of Coding" section in our work.
 
-## random_instance
+Each simulation consists of two scripts:
+1. \*_simulation.m - runs a simulation with various parameters, and saves the results into an "\*.mat" to the appropriate "data" directory, with unique date timestamp.
+2. \*_simulation_data_processing.m - plots one or more figures of given a "\*.mat" file, and saves them into the appropriate "plots" directory, with the same timestamp used for the "\*.mat" file.
+
+The simulations are:
+1. Random instance (under "random_instance" subdirectory).
+2. Key distribution:
+  - Memoryless algorithms - fixed and variable key-degree (under "key_distribution/memoryless" subdirectory).
+  - Variable key-degree for different ACS densities (under "key_distribution/memoryless_variable" subdirectory).
+  - Fixed key-degree ($`d = 2`$) and pair-covering  (under "key_distribution/memoryless_and_stateful" subdirectory).
+3. Content sharing (under "content_sharing" subdirectory).
