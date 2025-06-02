@@ -7,7 +7,7 @@ The code is written primarily in MATLAB, and was executed using MATLAB R2021b or
 2. Parallel Computing Toolbox add-on - for speeding up for loops by using parfor loops.
 3. [MatlabBGL](https://github.com/dgleich/matlab-bgl) by David F. Gleich, for efficient matching finding algorithm in graphs. 
 
-To properly run code found in the codebase, all 5 directories with all subdirectories (content_sharing, empirical_results, greedy_solution, key_distribution and server_broadcast), as well as matlab_bgl from [MatlabBGL](https://github.com/dgleich/matlab-bgl), need to be added to MATLAB's path.
+To properly run the code found in the codebase, all 5 directories with all subdirectories (content_sharing, empirical_results, greedy_solution, key_distribution and server_broadcast), as well as the entire matlab_bgl directory from [MatlabBGL](https://github.com/dgleich/matlab-bgl), need to be added to MATLAB's path.
 
 The following sections provide details and notes about some of the different directories in the codebase.
 
