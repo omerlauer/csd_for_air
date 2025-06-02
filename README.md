@@ -8,6 +8,8 @@ The code is written primarily in MATLAB, and was executed using MATLAB R2021b or
 
 Algorithms implementation (specifically the greedy coded algorithm implementation) makes use of [MatlabBGL](https://github.com/dgleich/matlab-bgl) by David F. Gleich, for efficient matching finding algorithm in graphs. Go check it out!
 
+To properly run code found in the codebase, all 5 directories (content_sharing, empirical_results, greedy_solution, key_distribution and server_broadcast), as well as their subdirectories, need to be added to MATLAB's path.
+
 The following sections provide details and notes about some of the different directories in the codebase.
 
 # server_broadcast
