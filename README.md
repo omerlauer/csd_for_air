@@ -64,7 +64,7 @@ It also contains a simple script generating Family 1 instances, shown in "Power 
 
 Each simulation consists of two scripts:
 1. \*_simulation.m - runs a simulation with various parameters, and saves the results into an "\*.mat" to the appropriate "data" subdirectory, with unique date timestamp. The current parameters setup in each simulation script is the same as used in our work.
-2. \*_simulation_data_processing.m - plots one or more figures of a given "\*.mat" file, and saves them into the appropriate "plots" subdirectory, with the same timestamp used for the "\*.mat" file.
+2. \*_simulation_data_processing.m - plots one or more figures of a given "\*.mat" file, and saves them into the appropriate "plots" subdirectory, with the same timestamp used for the "\*.mat" file, if exists.
 
 The simulations are:
 1. Random instance (under "random_instance" subdirectory).
