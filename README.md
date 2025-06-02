@@ -19,30 +19,28 @@ The broadcast does not contain any information about the coding coefficients use
 Each broadcast is a MATLAB cell made of 5 parts:
 1. objects - a list of objects coded in the broadcast.
 2. key - the key used to encrypt the broadcast.
-3. utility - this is another feature of the broadcast not discussed in the work. In general, it means how many objects/"useful" linear coding combinations are delivered by the broadcast to all users. More details on how utility is calculated in greedy coded/uncoded solution sections.
+3. utility - this is a broadcast feature not discussed in our work. In general, it equals to how many objects/"useful" linear coding combinations are delivered by the broadcast to all users. More details on how utility is calculated in greedy coded/uncoded solution sections.
 4. notes - whether the broadcast is coded or uncoded, if using essential keys or private keys.
 
-The main output of each greedy algorithm is the broadcast table, of all broadcasts used to solve the CSD instance. 
+The main output of each greedy algorithm is a broadcast table, containing all broadcasts used to solve the CSD instance. 
 
 # greedy_solution
 
 Contains two implementations for finding greedy uncoded and coded solutions for a CSD instance.
 
-Note that for efficiency, the greedy algorithms are not supplied with KHS containing private keys, but rather shared keys only. In their implementation, the greedy algorithms first try to utilize shared keys as much as possible, and after fully exhausting them, inferred private keys are used for final object deliveries, completing the CSD solution.
+Note that for efficiency, the greedy algorithms are not supplied with KHS containing private keys, but rather shared keys only. In their implementation, the algorithms first try to utilize shared keys as much as possible, and after fully exhausting them, inferred private keys are used for final object deliveries, completing the CSD solution.
 
 ## uncoded_solution
 
-Implements a standard set cover greedy algorithm. It uses a side information (SI) matrix to keep track which user holds which objects. The CSD instance is solved when the SI matrix equals the ACS.
+Implements a standard set cover greedy algorithm. It uses a side information (SI) matrix to keep track which user holds which objects. The CSD instance is solved when the SI matrix equals the ACS. After each uncoded broadcast, the SI matrix is updated accordingly.
 
-In the uncoded scenario, the utility of a broadcast is simply how many users learn a new (uncoded) object from the broadcast. After each uncoded broadcast, the SI matrix is updated accordingly.
+In the uncoded scenario, the utility of a broadcast is simply how many users learn a new (uncoded) object from the broadcast.
 
 ## coded_solution
 
-Implements the greedy coded algorithm 1 detailed in our work, with modifications to make it more efficient. The most notable one is that after finding a key to use in a broadcast, it is not added as a new right node to all users' graphs, but rather only to those in which that new node increases the graph's maximum matching size. This does not alter the algorithm's final output, as these nodes cannot contribute to any new matchings in those graphs in any later iteration of the algorithm.
+Implements the greedy coded algorithm 1 detailed in our work, with modifications to make it more efficient. The most notable one is that after finding a key to use in a broadcast, it is not added as a new right node to all users' graphs ($`G_{j}'`$), but rather only to those in which that new node increases the graph's maximum matching size. This does not alter the algorithm's final output, as these nodes cannot increase the matching size in those graphs in any later iteration of the algorithm.
 
-In the coded scenario, the utility of a broadcast is how many users gain a new independent linear combination of objects from it (each can gain a maximum of 1 new independent linear combination). In other terms - for how many users the total degree of freedom of their knowledge of objects is decreased (each can have it decreased by a maximum of 1 degree of freedom).
-
-This definition of utility can be seen as a generalization of the utility in the uncoded case.
+In the coded scenario, the utility of a broadcast is how many users gain a new independent linear combination of objects from it (each can gain a maximum of 1 new independent linear combination). In other terms - for how many users the total degree of freedom of their knowledge of their objects is decreased (each can have it decreased by a maximum of 1 degree of freedom). This definition of utility can be seen as a generalization of the utility in the uncoded case.
 
 # key_dsitribution
 
@@ -60,16 +58,16 @@ Contains one function for generating a content sharing scenario with its various
 # empirical_results
 
 The main directory for running simulations and generating plots used in our work.
-It also contains a simple script generating Family 1 instances, shown in "Power of Coding" section in our work.
+It also contains a simple script generating Family 1 instances, shown in "Power of Coding" section.
 
 Each simulation consists of two scripts:
-1. \*_simulation.m - runs a simulation with various parameters, and saves the results into an "\*.mat" to the appropriate "data" directory, with unique date timestamp.
-2. \*_simulation_data_processing.m - plots one or more figures of given a "\*.mat" file, and saves them into the appropriate "plots" directory, with the same timestamp used for the "\*.mat" file.
+1. \*_simulation.m - runs a simulation with various parameters, and saves the results into an "\*.mat" to the appropriate "data" subdirectory, with unique date timestamp. The current parameters setup in each simulation script is the same as used in our work.
+2. \*_simulation_data_processing.m - plots one or more figures of a given "\*.mat" file, and saves them into the appropriate "plots" subdirectory, with the same timestamp used for the "\*.mat" file.
 
 The simulations are:
 1. Random instance (under "random_instance" subdirectory).
 2. Key distribution:
   - Memoryless algorithms - fixed and variable key-degree (under "key_distribution/memoryless" subdirectory).
   - Variable key-degree for different ACS densities (under "key_distribution/memoryless_variable" subdirectory).
-  - Fixed key-degree ($`d = 2`$) and pair-covering  (under "key_distribution/memoryless_and_stateful" subdirectory).
+  - Fixed key-degree ($`d = 2`$) and pair-covering (under "key_distribution/memoryless_and_stateful" subdirectory).
 3. Content sharing (under "content_sharing" subdirectory).
