@@ -39,11 +39,11 @@ In the uncoded scenario, the utility of a broadcast is simply how many users lea
 
 ## coded_solution
 
-Implements the greedy coded algorithm 1 detailed in our work, with modifications to make it more efficient. The most notable one is that after finding a key to use in a broadcast, it is not added as a new right node to all users' graphs ($`G_{j}'`$), but rather only to those in which that new node increases the graph's maximum matching size. This does not alter the algorithm's final output, as these nodes cannot increase the matching size in those graphs in any later iteration of the algorithm.
+Implements the greedy coded algorithm 1 detailed in our work, with modifications to make it more efficient. The most notable one is that after finding a key to use in a broadcast, it is not added as a new right node to all users' graphs ($`G_{j}'`$), but rather only to those in which that new node increases the graph's maximum matching size. This does not alter the algorithm's final output: a node, that does not contribute to an increase in a graph's matching size in the current iteration, cannot contribute to an increase in matching size in any later iteration of the algorithm.
 
-In the coded scenario, the utility of a broadcast is how many users gain a new independent linear combination of objects from it (each can gain a maximum of 1 new independent linear combination). In other terms - for how many users the total degree of freedom of their knowledge of their objects is decreased (each can have it decreased by a maximum of 1 degree of freedom). This definition of utility can be seen as a generalization of the utility in the uncoded case.
+In the coded scenario, the utility of a broadcast is how many users gain a new independent linear combination of objects from it (each can gain a maximum of 1 new independent linear combination per broadcast). In other words - for how many users the total degree of freedom of their knowledge of their objects is decreased (each can have it decreased by a maximum of 1 degree of freedom per broadcast). This definition of utility can be seen as a generalization of the utility in the uncoded case.
 
-# key_dsitribution
+# key_distribution
 
 Implements the key distribution algorithms shown in our work (the ACS-agnostic algorithm is not implemented):
 1. Fixed Key-Degree ACS-Aware algorithm (under "memoryless" subdirectory).
