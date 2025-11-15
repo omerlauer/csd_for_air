@@ -52,7 +52,7 @@ Implements the key distribution algorithms shown in our work (the ACS-agnostic a
 
 The directory also contains a script for testing various probability calculations shown in our work.
 
-# content sharing
+# content_sharing
 
 Contains one function for generating a content sharing scenario with its various parameters.
 
